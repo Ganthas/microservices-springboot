@@ -3,9 +3,7 @@ package com.jsanhueza.alumno.controller;
 import com.jsanhueza.alumno.model.Alumno;
 import com.jsanhueza.alumno.repository.AlumnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +25,16 @@ public class AlumnoController {
     {
         List<Alumno> alumnosList = alumnoRepository.findAll();
         return alumnosList;
+    }
+
+    @PostMapping("/alumno")
+    public Alumno add(@RequestBody Alumno newAlumno)
+    {
+        Alumno alumno = new Alumno();
+        alumno.setNombre(newAlumno.getNombre());
+        alumno.setApellido(newAlumno.getApellido());
+        alumno.setEstatura(newAlumno.getEstatura());
+        alumnoRepository.insert(alumno);
+        return alumno;
     }
 }
