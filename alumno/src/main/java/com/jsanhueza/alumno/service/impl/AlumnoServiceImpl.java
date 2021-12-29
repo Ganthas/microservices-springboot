@@ -4,7 +4,11 @@ import com.jsanhueza.alumno.model.Alumno;
 import com.jsanhueza.alumno.repository.AlumnoRepository;
 import com.jsanhueza.alumno.service.AlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class AlumnoServiceImpl implements AlumnoService {
 
     @Autowired
@@ -27,5 +31,10 @@ public class AlumnoServiceImpl implements AlumnoService {
         }
 
         return "Proporcione un id";
+    }
+
+    @Override
+    public List<Alumno> findAll() {
+        return alumnoRepository.findAll();
     }
 }
