@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlumnoServiceImpl implements AlumnoService {
@@ -36,5 +37,10 @@ public class AlumnoServiceImpl implements AlumnoService {
     @Override
     public List<Alumno> findAll() {
         return alumnoRepository.findAll();
+    }
+
+    @Override
+    public Optional<Alumno> findById(String codigo) {
+        return alumnoRepository.findById(codigo);
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -20,6 +21,14 @@ public class AlumnoController {
     {
         List<Alumno> alumnosList = alumnoService.findAll();
         return alumnosList;
+    }
+
+    @GetMapping("/alumno/{codigo}")
+    public Alumno getAlumno(@PathVariable String codigo)
+    {
+        Optional<Alumno> alumno = alumnoService.findById(codigo);
+        Alumno alumnoTemp = alumno.get();
+        return alumnoTemp;
     }
 
     @PostMapping("/alumno")
