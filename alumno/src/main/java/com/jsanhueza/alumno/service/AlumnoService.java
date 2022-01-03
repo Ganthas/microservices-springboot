@@ -9,5 +9,5 @@ public interface AlumnoService {
     Alumno save(Alumno alumno);
     String delete(String id);
     List<Alumno> findAll();
-    Optional<Alumno> findById(String codigo);
+    Alumno findById(String codigo);
 }

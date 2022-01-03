@@ -40,7 +40,14 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public Optional<Alumno> findById(String codigo) {
-        return alumnoRepository.findById(codigo);
+    public Alumno findById(String codigo) {
+        Alumno alumno = new Alumno();
+        Optional<Alumno> alumnoOptional = alumnoRepository.findById(codigo);
+
+        if(!alumnoOptional.isEmpty()){
+            alumno = alumnoOptional.get();
+        }
+
+        return alumno;
     }
 }

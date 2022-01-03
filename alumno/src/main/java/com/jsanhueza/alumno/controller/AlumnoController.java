@@ -26,9 +26,7 @@ public class AlumnoController {
     @GetMapping("/alumno/{codigo}")
     public Alumno getAlumno(@PathVariable String codigo)
     {
-        Optional<Alumno> alumno = alumnoService.findById(codigo);
-        Alumno alumnoTemp = alumno.get();
-        return alumnoTemp;
+        return alumnoService.findById(codigo);
     }
 
     @PostMapping("/alumno")
