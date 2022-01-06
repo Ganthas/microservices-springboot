@@ -1,13 +1,11 @@
 package com.jsanhueza.alumno.controller;
 
 import com.jsanhueza.alumno.model.Alumno;
-import com.jsanhueza.alumno.repository.AlumnoRepository;
 import com.jsanhueza.alumno.service.AlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
