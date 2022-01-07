@@ -4,11 +4,7 @@ spring:
       server:
         git:
           uri: https://github.com/Ganthas/microservice-config
-          repos:
-            developper:
-              pattern:
-                - '*/dev'
-              uri: https://github.com/Ganthas/microservice-config2
+
   application:
     name: config
 #HTTP Server
