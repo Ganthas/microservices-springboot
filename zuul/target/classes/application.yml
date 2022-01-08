@@ -1,0 +1,36 @@
+zuul:
+  routes:
+    alumno:
+      path: /alumno/**
+      sensitive-headers:
+      service-id: alumno.servicio
+    curso:
+      path: /curso/**
+      sensitive-headers:
+      service-id: curso.servicio
+    matricula:
+      path: /matricula/**
+      sensitive-headers:
+      service-id: matricula.servicio
+    uaa:
+      path: /uaa/**
+      sensitive-headers:
+      service-id: uaa.servicio
+    
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+server:
+  port: 6565
+  
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:7777/user
+
+spring:
+  profiles:
+    active:
+    - default
