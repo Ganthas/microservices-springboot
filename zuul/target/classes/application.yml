@@ -12,10 +12,10 @@ zuul:
       path: /matricula/**
       sensitive-headers:
       service-id: matricula.servicio
-    uaa:
-      path: /uaa/**
-      sensitive-headers:
-      service-id: uaa.servicio
+#    uaa:
+#      path: /uaa/**
+#      sensitive-headers:
+#      service-id: uaa.servicio
     
 eureka:
   client:
@@ -29,8 +29,3 @@ security:
   oauth2:
     resource:
       user-info-uri: http://localhost:7777/user
-
-spring:
-  profiles:
-    active:
-    - default

@@ -8,24 +8,32 @@ import org.slf4j.LoggerFactory;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
+import org.springframework.http.HttpStatus;
 
-public class MiPreFiltro extends ZuulFilter{
+public class FirstFilter extends ZuulFilter{
 	
-	private static Logger LOGGER = LoggerFactory.getLogger(MiPreFiltro.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(FirstFilter.class);
     private static final String FILTERTYPE = "pre";
     private static final Integer FILTERORDER = 1;
 
-    public MiPreFiltro(){ }
+    public FirstFilter(){ }
     
 	@Override
 	public boolean shouldFilter() {
-		return true;
+		RequestContext ctx = RequestContext.getCurrentContext();
+		final String firstFlag = RequestContext.getCurrentContext().getRequest().getHeader("filterFlag");
+		if (null == firstFlag) {
+			ctx.unset();
+			ctx.setResponseBody("se necesita propiedad filterFlag en el headers");
+			ctx.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
+			return false;
+		} else{
+			return true;
+		}
 	}
 
 	@Override
 	public Object run() throws ZuulException {
-		final HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
-		LOGGER.info("Petición {} a {}", request.getMethod(), request.getRequestURL().toString());
 		return null;
 	}
 

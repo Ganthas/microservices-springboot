@@ -14,7 +14,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="microzuul" options="-parameters" />
-      <module name="zuul" options="-parameters --add-modules java.base" />
+      <module name="zuul" options="-parameters" />
     </option>
   </component>
 </project>

@@ -19,20 +19,17 @@ import org.springframework.web.filter.CorsFilter;
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	
-	/*@Override
+	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/uaa/oauth/**").permitAll()
-		.antMatchers(HttpMethod.GET, "/catalogo/productos").hasAnyRole("ADMIN", "USER")
-		.antMatchers(HttpMethod.GET,
-				"/catalogo/producto/{id}",
-				"/catalogo/actualizarCatalogo/{codigo}/{unidades}",
-				"/compra/producto/{codigo}").hasAnyRole("ADMIN", "USER")
-		.antMatchers(HttpMethod.POST ,"/catalogo/producto").hasRole("ADMIN")
-		.antMatchers(HttpMethod.DELETE ,"/catalogo/producto/{codigo}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/alumno/alumno/{codigo}").permitAll()
+				.antMatchers(HttpMethod.GET, "/alumno/alumnos/").permitAll()
+//		.antMatchers(HttpMethod.GET, "").hasAnyRole("ADMIN", "USER")
+//		.antMatchers(HttpMethod.POST ,"").hasRole("ADMIN")
+//		.antMatchers(HttpMethod.DELETE ,"").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and().cors().configurationSource(corsConfigurationSource());
-	}*/
-	/*
+	}
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration corsConfig = new CorsConfiguration();
@@ -44,12 +41,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", corsConfig);
 		return source;
-	}*/
+	}
 	
-	/*@Bean
+	@Bean
 	public FilterRegistrationBean<CorsFilter> corsFilter() {
 		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(corsConfigurationSource()));
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		return bean;
-	}*/
+	}
 }
