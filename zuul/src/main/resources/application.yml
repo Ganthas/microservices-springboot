@@ -12,10 +12,10 @@ zuul:
       path: /matricula/**
       sensitive-headers:
       service-id: matricula.servicio
-#    uaa:
-#      path: /uaa/**
-#      sensitive-headers:
-#      service-id: uaa.servicio
+    uaa:
+      path: /uaa/**
+      sensitive-headers:
+      service-id: auth.servicio
     
 eureka:
   client:

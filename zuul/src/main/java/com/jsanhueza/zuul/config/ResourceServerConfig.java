@@ -21,14 +21,21 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/uaa/oauth/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/alumno/alumno/{codigo}").permitAll()
-				.antMatchers(HttpMethod.GET, "/alumno/alumnos/").permitAll()
-//		.antMatchers(HttpMethod.GET, "").hasAnyRole("ADMIN", "USER")
-//		.antMatchers(HttpMethod.POST ,"").hasRole("ADMIN")
-//		.antMatchers(HttpMethod.DELETE ,"").hasRole("ADMIN")
-		.anyRequest().authenticated()
-		.and().cors().configurationSource(corsConfigurationSource());
+		http.authorizeRequests()
+				.antMatchers("/uaa/oauth/**").permitAll()
+				.antMatchers(HttpMethod.POST ,"/alumno/alumno").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/alumno/alumno/{codigo}").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.GET, "/alumno/alumnos/").hasAnyRole("ADMIN", "USER")
+
+				.antMatchers(HttpMethod.POST ,"/curso/curso").hasRole("ADMIN")
+				.antMatchers(HttpMethod.GET, "/curso/curso/{codigo}").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.GET, "/curso/cursos/").hasAnyRole("ADMIN", "USER")
+
+				.antMatchers(HttpMethod.GET, "/matricula/alumno/{codigo}").hasAnyRole("ADMIN", "USER")
+
+				.and()
+				.cors()
+				.configurationSource(corsConfigurationSource());
 	}
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {

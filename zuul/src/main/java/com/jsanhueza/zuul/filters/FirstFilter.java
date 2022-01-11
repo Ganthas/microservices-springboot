@@ -22,7 +22,8 @@ public class FirstFilter extends ZuulFilter{
 	public boolean shouldFilter() {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		final String firstFlag = RequestContext.getCurrentContext().getRequest().getHeader("filterFlag");
-		if (null == firstFlag) {
+		String microservicio = ctx.getRequest().getRequestURI().split("/")[1];
+		if (null == firstFlag && !microservicio.equals("uaa")) {
 			ctx.unset();
 			ctx.setResponseBody("se necesita propiedad filterFlag en el headers");
 			ctx.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
