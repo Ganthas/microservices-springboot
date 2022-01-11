@@ -32,6 +32,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 				.antMatchers(HttpMethod.GET, "/curso/cursos/").hasAnyRole("ADMIN", "USER")
 
 				.antMatchers(HttpMethod.GET, "/matricula/alumno/{codigo}").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.GET, "/matricula/matricula/alumno/{codigo}").hasAnyRole("ADMIN", "USER")
 
 				.and()
 				.cors()
